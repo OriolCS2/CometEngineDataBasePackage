@@ -1,4 +1,5 @@
 using namespace CometEngine;
+using namespace Json;
 
 class /*@*/ DataManager : CometBehaviour
 {
@@ -11,10 +12,10 @@ class /*@*/ DataManager : CometBehaviour
 	{
 		DataManager::get = this;
 
-		Json::JsonObject globalData = Json::JsonObject::FileToJson(App::GetPersistentPath() + globalDataPath);
+		JsonObject globalData = JsonObject::FileToJson(App::GetPersistentPath() + globalDataPath);
 		dataBase.LoadGlobal(globalData);
 
-		Json::JsonObject sloatData = Json::JsonObject::FileToJson(App::GetPersistentPath() + sloat1DataPath);
+		JsonObject sloatData = JsonObject::FileToJson(App::GetPersistentPath() + sloat1DataPath);
 		dataBase.LoadSlot(sloatData);
 	}
 
