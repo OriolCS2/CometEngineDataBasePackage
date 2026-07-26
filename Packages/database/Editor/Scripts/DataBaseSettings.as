@@ -1,57 +1,60 @@
 using namespace CometEngine;
 
-class /*@*/ DataBaseSettings : ProjectSetting
+namespace DataBaseEditor
 {
-	[Serialize] private string initialDirectoryDDBB = "DDBB/DDBB/";
-	[Serialize] private string initialTablesDirectoryDDBB = "DDBB/Editor/";
-
-	string InitialDirectoryDDBB
+	class /*@*/ DataBaseSettings : ProjectSetting
 	{
-		get
+		[Serialize] private string initialDirectoryDDBB = "DDBB/DDBB/";
+		[Serialize] private string initialTablesDirectoryDDBB = "DDBB/Editor/";
+
+		string InitialDirectoryDDBB
 		{
-			string path = "Assets/" + initialDirectoryDDBB;
-			if (path.at(path.length() - 1) != "/")
+			get
 			{
-				path += "/";
+				string path = "Assets/" + initialDirectoryDDBB;
+				if (path.at(path.length() - 1) != "/")
+				{
+					path += "/";
+				}
+				return path;
 			}
-			return path;
+		}
+
+		string InitialTablesDirectoryDDBB
+		{
+			get
+			{
+				string path = "Assets/" + initialTablesDirectoryDDBB;
+				if (path.at(path.length() - 1) != "/")
+				{
+					path += "/";
+				}
+				return path;
+			}
+		}
+
+		[ShowButton("Create Directories")]
+		void CreateFolders()
+		{
+			CometEditor::AssetDataBase::CreateDirectory(initialDirectoryDDBB);
+			CometEditor::AssetDataBase::CreateDirectory(initialTablesDirectoryDDBB);
+		}
+
+		ProjectSettingInfo GetInfo()
+		{
+			ProjectSettingInfo info;
+			info.name = "DataBase";
+			info.documentationLink = "https://github.com/OriolCS2/CometEngineDataBasePackage";
+			info.icon = CometEditor::RawIcon::Database;
+			return info;
 		}
 	}
 
-	string InitialTablesDirectoryDDBB
+	namespace DataBaseSettings
 	{
-		get
+		DataBaseSettings@ Get()
 		{
-			string path = "Assets/" + initialTablesDirectoryDDBB;
-			if (path.at(path.length() - 1) != "/")
-			{
-				path += "/";
-			}
-			return path;
+			return cast<DataBaseSettings>(ProjectSetting::Get("DataBaseSettings"));
 		}
-	}
-
-	[ShowButton("Create Directories")]
-	void CreateFolders()
-	{
-		CometEditor::AssetDataBase::CreateDirectory(initialDirectoryDDBB);
-		CometEditor::AssetDataBase::CreateDirectory(initialTablesDirectoryDDBB);
-	}
-
-	ProjectSettingInfo GetInfo()
-	{
-		ProjectSettingInfo info;
-		info.name = "DataBase";
-		info.documentationLink = "https://github.com/OriolCS2/CometEngineDataBasePackage";
-		info.icon = CometEditor::RawIcon::Database;
-		return info;
-	}
-}
-
-namespace DataBaseSettings
-{
-	DataBaseSettings@ Get()
-	{
-		return cast<DataBaseSettings>(ProjectSetting::Get("DataBaseSettings"));
 	}
 }
