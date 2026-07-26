@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "slug": "database",
+    "displayName": "DataBase",
+    "version": "1.0.0",
+    "packageType": "package",
+    "summary": "Easy way to save\/load everything you need using tables.",
+    "description": "Create information tables with your own type of fields and they will auto save\/load.",
+    "author": {
+        "name": "CometEngine",
+        "email": "contrasnya@gmail.com",
+        "url": ""
+    },
+    "license": "MIT",
+    "category": "Scripts",
+    "tags": [
+        "database",
+        "ddbb"
+    ],
+    "homepageUrl": "",
+    "repoUrl": "https:\/\/github.com\/OriolCS2\/CometEngineDataBasePackage",
+    "documentationUrl": "",
+    "changelogUrl": "",
+    "minEngineVersion": "2.8.1",
+    "dependencies": {},
+    "samples": [],
+    "hiddenFolders": [],
+    "hideInEditor": false
+}
