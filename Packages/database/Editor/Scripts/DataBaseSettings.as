@@ -31,7 +31,13 @@ class /*@*/ DataBaseSettings : ProjectSetting
 		}
 	}
 
-#ifdef COMET_EDITOR
+	[ShowButton("Create Directories")]
+	void CreateFolders()
+	{
+		CometEditor::AssetDataBase::CreateDirectory(initialDirectoryDDBB);
+		CometEditor::AssetDataBase::CreateDirectory(initialTablesDirectoryDDBB);
+	}
+
 	ProjectSettingInfo GetInfo()
 	{
 		ProjectSettingInfo info;
@@ -40,7 +46,6 @@ class /*@*/ DataBaseSettings : ProjectSetting
 		info.icon = CometEditor::RawIcon::Database;
 		return info;
 	}
-#endif
 }
 
 namespace DataBaseSettings

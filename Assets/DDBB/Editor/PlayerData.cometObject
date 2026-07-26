@@ -1,0 +1,75 @@
+{
+    "Script": "15762652687214170241",
+    "Fields": {
+        "bool isRoot": {
+            "Value": true
+        },
+        "TableSaveLoadMode saveLoadMode": {
+            "Value": 1
+        },
+        "TableDDBBField@[]& fields": {
+            "Length": 4,
+            "IsClass": true,
+            "Array": [
+                {
+                    "Value": {
+                        "string& name": {
+                            "Value": "mainWeapon"
+                        },
+                        "TableDDBBFieldType type": {
+                            "Value": 11
+                        },
+                        "string& enumTypeName": {
+                            "Value": ""
+                        },
+                        "TableDDBB@ TableDDBBType": {
+                            "Resource": "3582025463521182149"
+                        }
+                    }
+                },
+                {
+                    "Value": {
+                        "string& name": {
+                            "Value": "money"
+                        },
+                        "TableDDBBFieldType type": {
+                            "Value": 1
+                        },
+                        "string& enumTypeName": {
+                            "Value": ""
+                        },
+                        "TableDDBB@ TableDDBBType": {}
+                    }
+                },
+                {
+                    "Value": {
+                        "string& name": {
+                            "Value": "name"
+                        },
+                        "TableDDBBFieldType type": {
+                            "Value": 3
+                        },
+                        "string& enumTypeName": {
+                            "Value": ""
+                        },
+                        "TableDDBB@ TableDDBBType": {}
+                    }
+                },
+                {
+                    "Value": {
+                        "string& name": {
+                            "Value": "stars"
+                        },
+                        "TableDDBBFieldType type": {
+                            "Value": 1
+                        },
+                        "string& enumTypeName": {
+                            "Value": ""
+                        },
+                        "TableDDBB@ TableDDBBType": {}
+                    }
+                }
+            ]
+        }
+    }
+}
