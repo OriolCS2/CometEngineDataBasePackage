@@ -1,0 +1,10 @@
+{
+    "Fields": {
+        "string& initialDirectoryDDBB": {
+            "Value": "DDBB\/DDBB\/"
+        },
+        "string& initialTablesDirectoryDDBB": {
+            "Value": "DDBB\/Editor\/Tables\/"
+        }
+    }
+}

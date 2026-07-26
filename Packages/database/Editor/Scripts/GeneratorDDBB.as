@@ -6,9 +6,6 @@ class TableData
 
 namespace GeneratorDDBB
 {
-	string initialDirectoryDDBB = "Assets/DDBB/DDBB/";
-	string initialTablesDirectoryDDBB = "Assets/DDBB/Editor/Tables/";
-
 	string RemoveAssetsFromPath(const string&in path)
 	{
 		return path.substr(7);
@@ -21,17 +18,19 @@ class GeneratorDDBB
 
 	void Generate()
 	{
-		if (!FileSystem::IsDirectory(GeneratorDDBB::initialDirectoryDDBB))
+		string initialDirectoryDDBB = DataBaseSettings::Get().InitialDirectoryDDBB;
+		if (!FileSystem::IsDirectory(initialDirectoryDDBB))
 		{
-			FileSystem::CreateDir(GeneratorDDBB::initialDirectoryDDBB);
+			FileSystem::CreateDir(initialDirectoryDDBB);
 		}
 
-		if (FileSystem::IsDirectory(GeneratorDDBB::initialTablesDirectoryDDBB))
+		string initialTablesDirectoryDDBB = DataBaseSettings::Get().InitialTablesDirectoryDDBB;
+		if (FileSystem::IsDirectory(initialTablesDirectoryDDBB))
 		{
 			array<string> existingExtensionPaths = GetAllExtensionDDBBPaths();
 			DeleteGeneratedDDBBFiles();
 
-			array<TableData @> tablesData;
+			array<TableData@> tablesData;
 			array<string> tablesPath = GetAllTablesPath();
 			uint tablesCount = tablesPath.length();
 			for (uint i = 0; i < tablesCount; i++)
@@ -39,8 +38,8 @@ class GeneratorDDBB
 				TableDDBB table = cast<TableDDBB>(AssetDataBase::Load(GeneratorDDBB::RemoveAssetsFromPath(tablesPath[i]), ResourceType::COMET_OBJECT));
 				if (Object::IsValid(table))
 				{
-					TableData @tableData = TableData();
-					tableData.path = GeneratorDDBB::initialDirectoryDDBB + tablesPath[i].substr(GeneratorDDBB::initialTablesDirectoryDDBB.length());
+					TableData@tableData = TableData();
+					tableData.path = initialDirectoryDDBB + tablesPath[i].substr(initialTablesDirectoryDDBB.length());
 					tableData.table = table;
 					tablesData.insertLast(tableData);
 				}
@@ -60,7 +59,7 @@ class GeneratorDDBB
 				uint tablesDataCount = tablesData.length();
 				for (uint i = 0; i < tablesDataCount; i++)
 				{
-					TableData @tableData = tablesData[i];
+					TableData@tableData = tablesData[i];
 					GenerateData(tableData, existingExtensionPaths);
 					if (tableData.table.isRoot)
 					{
@@ -73,13 +72,13 @@ class GeneratorDDBB
 						switch (tableData.table.saveLoadMode)
 						{
 							case TableSaveLoadMode::GLOBAL:
-								loadGlobalMethodData += loadObjectString;
-								saveGlobalMethodData += saveObjectString;
-								break;
+							loadGlobalMethodData += loadObjectString;
+							saveGlobalMethodData += saveObjectString;
+							break;
 							case TableSaveLoadMode::SLOT:
-								loadSlotMethodData += loadObjectString;
-								saveSlotMethodData += saveObjectString;
-								break;
+							loadSlotMethodData += loadObjectString;
+							saveSlotMethodData += saveObjectString;
+							break;
 						}
 					}
 					AssetDataBase::Unload(tableData.table);
@@ -99,9 +98,9 @@ class GeneratorDDBB
 			globalDDBBfileData += "\n" + loadSlotMethodData;
 
 			globalDDBBfileData += "\t}\n}";
-			FileSystem::Save(GeneratorDDBB::initialDirectoryDDBB + "DDBB.as", globalDDBBfileData);
+			FileSystem::Save(initialDirectoryDDBB + "DDBB.as", globalDDBBfileData);
 
-			string globalDDBBExtensionFilePath = GeneratorDDBB::initialDirectoryDDBB + "DDBBExtension.as";
+			string globalDDBBExtensionFilePath = initialDirectoryDDBB + "DDBBExtension.as";
 			if (!FileSystem::Exists(globalDDBBExtensionFilePath))
 			{
 				string globalDDBBExtensionFileData = "using namespace CometEngine;\n\nnamespace DDBB\n{\n\tclass /*@*/ DDBBExtension : DDBB\n\t{\n\n\t}\n}";
@@ -116,7 +115,7 @@ class GeneratorDDBB
 		}
 	}
 
-	private void GenerateData(TableData @tableData, array<string>&inout existingExtensionPaths)
+	private void GenerateData(TableData@tableData, array<string>&inout existingExtensionPaths)
 	{
 		string dir = GetDirectoryFromPath(tableData.path);
 		if (!FileSystem::IsDirectory(dir))
@@ -195,13 +194,14 @@ class GeneratorDDBB
 	{
 		array<string> extensionPaths;
 
-		if (!FileSystem::IsDirectory(GeneratorDDBB::initialDirectoryDDBB))
+		string initialDirectoryDDBB = DataBaseSettings::Get().InitialDirectoryDDBB;
+		if (!FileSystem::IsDirectory(initialDirectoryDDBB))
 		{
 			return extensionPaths;
 		}
 
 		array<string> directoriesToCheck;
-		directoriesToCheck.insertLast(GeneratorDDBB::initialDirectoryDDBB);
+		directoriesToCheck.insertLast(initialDirectoryDDBB);
 		while (!directoriesToCheck.isEmpty())
 		{
 			string currentDirectory = directoriesToCheck[0];
@@ -230,13 +230,14 @@ class GeneratorDDBB
 
 	private void DeleteGeneratedDDBBFiles()
 	{
-		if (!FileSystem::IsDirectory(GeneratorDDBB::initialDirectoryDDBB))
+		string initialDirectoryDDBB = DataBaseSettings::Get().InitialDirectoryDDBB;
+		if (!FileSystem::IsDirectory(initialDirectoryDDBB))
 		{
 			return;
 		}
 
 		array<string> directoriesToCheck;
-		directoriesToCheck.insertLast(GeneratorDDBB::initialDirectoryDDBB);
+		directoriesToCheck.insertLast(initialDirectoryDDBB);
 		while (!directoriesToCheck.isEmpty())
 		{
 			string currentDirectory = directoriesToCheck[0];
@@ -286,7 +287,8 @@ class GeneratorDDBB
 		array<string> tablesPath;
 
 		array<string> directoriesToCheck;
-		directoriesToCheck.insertLast(GeneratorDDBB::initialTablesDirectoryDDBB);
+		string initialTablesDirectoryDDBB = DataBaseSettings::Get().InitialTablesDirectoryDDBB;
+		directoriesToCheck.insertLast(initialTablesDirectoryDDBB);
 		while (!directoriesToCheck.isEmpty())
 		{
 			string currentDirectory = directoriesToCheck[0];

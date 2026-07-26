@@ -14,7 +14,7 @@ using namespace CometEditor;
 		TableDDBBViewer::get = this;
 	}
 
-	void OnCustomInspector(TableDDBB @definition)
+	void OnCustomInspector(TableDDBB@definition)
 	{
 		GUI::ShowProperty("isRoot");
 		if (definition.isRoot)
@@ -229,14 +229,18 @@ using namespace CometEditor;
 		}
 	}
 
-	[MainMenuItem("DDBB/Generate")] void RegenerateDDBB() {
+	[MainMenuItem("DDBB/Generate")]
+	void RegenerateDDBB()
+	{
 		PopupManager::OpenActionInProgressPopupWithCallback("Generating DDBB", "", CometDelegate(RegenerateInternal));
 	}
 
-		[MainMenuItem("DDBB/Create Table")] void CreateNewTable()
+	[MainMenuItem("DDBB/Create Table")]
+	void CreateNewTable()
 	{
 		TableDDBB newDefinition = TableDDBB();
-		AssetDataBase::AddCometObject(newDefinition, GeneratorDDBB::RemoveAssetsFromPath(GeneratorDDBB::initialTablesDirectoryDDBB + "NewTable"), true, true);
+		string initialTablesDirectoryDDBB = DataBaseSettings::Get().InitialTablesDirectoryDDBB;
+		AssetDataBase::AddCometObject(newDefinition, GeneratorDDBB::RemoveAssetsFromPath(initialTablesDirectoryDDBB + "NewTable"), true, true);
 	}
 
 	private void RegenerateInternal()
@@ -317,77 +321,77 @@ using namespace CometEditor;
 		switch (type)
 		{
 			case TableDDBBFieldType::UINT:
-				return "Uint";
+			return "Uint";
 			case TableDDBBFieldType::INT:
-				return "Int";
+			return "Int";
 			case TableDDBBFieldType::FLOAT:
-				return "Float";
+			return "Float";
 			case TableDDBBFieldType::STRING:
-				return "String";
+			return "String";
 			case TableDDBBFieldType::VECTOR2:
-				return "Vector2";
+			return "Vector2";
 			case TableDDBBFieldType::VECTOR2I:
-				return "Vector2I";
+			return "Vector2I";
 			case TableDDBBFieldType::VECTOR3:
-				return "Vector3";
+			return "Vector3";
 			case TableDDBBFieldType::VECTOR3I:
-				return "Vector3I";
+			return "Vector3I";
 			case TableDDBBFieldType::COLOR:
-				return "Color";
+			return "Color";
 			case TableDDBBFieldType::BOOL:
-				return "Bool";
+			return "Bool";
 			case TableDDBBFieldType::ENUM:
-				return "Enum";
+			return "Enum";
 			case TableDDBBFieldType::DATA_DEFINITION:
-				return "TableDDBB";
+			return "TableDDBB";
 			case TableDDBBFieldType::ARRAY_UINT:
-				return "Array<Uint>";
+			return "Array<Uint>";
 			case TableDDBBFieldType::ARRAY_INT:
-				return "Array<Int>";
+			return "Array<Int>";
 			case TableDDBBFieldType::ARRAY_FLOAT:
-				return "Array<Float>";
+			return "Array<Float>";
 			case TableDDBBFieldType::ARRAY_STRING:
-				return "Array<String>";
+			return "Array<String>";
 			case TableDDBBFieldType::ARRAY_VECTOR2:
-				return "Array<Vector2>";
+			return "Array<Vector2>";
 			case TableDDBBFieldType::ARRAY_VECTOR2I:
-				return "Array<Vector2I>";
+			return "Array<Vector2I>";
 			case TableDDBBFieldType::ARRAY_VECTOR3:
-				return "Array<Vector3>";
+			return "Array<Vector3>";
 			case TableDDBBFieldType::ARRAY_VECTOR3I:
-				return "Array<Vector3I>";
+			return "Array<Vector3I>";
 			case TableDDBBFieldType::ARRAY_COLOR:
-				return "Array<Color>";
+			return "Array<Color>";
 			case TableDDBBFieldType::ARRAY_BOOL:
-				return "Array<Bool>";
+			return "Array<Bool>";
 			case TableDDBBFieldType::ARRAY_ENUM:
-				return "Array<Enum>";
+			return "Array<Enum>";
 			case TableDDBBFieldType::ARRAY_DATA_DEFINITION:
-				return "Array<TableDDBB>";
+			return "Array<TableDDBB>";
 			case TableDDBBFieldType::DICT_UINT:
-				return "Dict<Uint>";
+			return "Dict<Uint>";
 			case TableDDBBFieldType::DICT_INT:
-				return "Dict<Int>";
+			return "Dict<Int>";
 			case TableDDBBFieldType::DICT_FLOAT:
-				return "Dict<Float>";
+			return "Dict<Float>";
 			case TableDDBBFieldType::DICT_STRING:
-				return "Dict<String>";
+			return "Dict<String>";
 			case TableDDBBFieldType::DICT_VECTOR2:
-				return "Dict<Vector2>";
+			return "Dict<Vector2>";
 			case TableDDBBFieldType::DICT_VECTOR2I:
-				return "Dict<Vector2I>";
+			return "Dict<Vector2I>";
 			case TableDDBBFieldType::DICT_VECTOR3:
-				return "Dict<Vector3>";
+			return "Dict<Vector3>";
 			case TableDDBBFieldType::DICT_VECTOR3I:
-				return "Dict<Vector3I>";
+			return "Dict<Vector3I>";
 			case TableDDBBFieldType::DICT_COLOR:
-				return "Dict<Color>";
+			return "Dict<Color>";
 			case TableDDBBFieldType::DICT_BOOL:
-				return "Dict<Bool>";
+			return "Dict<Bool>";
 			case TableDDBBFieldType::DICT_ENUM:
-				return "Dict<Enum>";
+			return "Dict<Enum>";
 			case TableDDBBFieldType::DICT_DATA_DEFINITION:
-				return "Dict<TableDDBB>";
+			return "Dict<TableDDBB>";
 		}
 		return "Unknown";
 	}

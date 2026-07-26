@@ -4,7 +4,7 @@ using namespace CometEditor;
 [MainMenuItemWindow("DDBB/Tables Viewer", "DDBB")] class /*@*/ TablesDDBBWindow : EditorWindow
 {
 	private array<string> allTables;
-	array<TableDDBB @> openedTables;
+	array<TableDDBB@> openedTables;
 	private int focusTable = -1;
 	string filterText;
 
@@ -31,7 +31,8 @@ using namespace CometEditor;
 		allTables.resize(0);
 
 		array<string> directoriesToCheck;
-		directoriesToCheck.insertLast(GeneratorDDBB::initialTablesDirectoryDDBB);
+		string initialTablesDirectoryDDBB = DataBaseSettings::Get().InitialTablesDirectoryDDBB;
+		directoriesToCheck.insertLast(initialTablesDirectoryDDBB);
 
 		while (!directoriesToCheck.isEmpty())
 		{
@@ -94,10 +95,11 @@ using namespace CometEditor;
 			}
 			if (GUI::MenuItem("New Table"))
 			{
+				string initialTablesDirectoryDDBB = DataBaseSettings::Get().InitialTablesDirectoryDDBB;
 				TableDDBB newDefinition = TableDDBB();
-				AssetDataBase::AddCometObject(newDefinition, GeneratorDDBB::RemoveAssetsFromPath(GeneratorDDBB::initialTablesDirectoryDDBB + "NewTable"), true, true);
-				allTables.insertLast(GeneratorDDBB::initialTablesDirectoryDDBB + newDefinition.name + ".cometObject");
-				OpenTable(GeneratorDDBB::initialTablesDirectoryDDBB + newDefinition.name + ".cometObject");
+				AssetDataBase::AddCometObject(newDefinition, GeneratorDDBB::RemoveAssetsFromPath(initialTablesDirectoryDDBB + "NewTable"), true, true);
+				allTables.insertLast(initialTablesDirectoryDDBB + newDefinition.name + ".cometObject");
+				OpenTable(initialTablesDirectoryDDBB + newDefinition.name + ".cometObject");
 				allTables.sortDesc();
 			}
 			if (GUI::MenuItem("Refresh"))
@@ -222,7 +224,7 @@ using namespace CometEditor;
 		string tableName = FileSystem::GetFileName(path);
 		if (!IsTableOpen(tableName))
 		{
-			TableDDBB @table = cast<TableDDBB>(AssetDataBase::Load(GeneratorDDBB::RemoveAssetsFromPath(path), ResourceType::COMET_OBJECT));
+			TableDDBB@table = cast<TableDDBB>(AssetDataBase::Load(GeneratorDDBB::RemoveAssetsFromPath(path), ResourceType::COMET_OBJECT));
 			if (Object::IsValid(table))
 			{
 				openedTables.insertLast(table);
