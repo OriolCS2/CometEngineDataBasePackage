@@ -1,0 +1,47 @@
+{
+    "ID": "7902458436752692816",
+    "Type": "Texture",
+    "TextureType": 0,
+    "Read\/Write": false,
+    "Mipmaps": 1,
+    "SVGScale": 10,
+    "WrapModePerAxis": false,
+    "WrapAxisS": 2,
+    "WrapAxisT": 2,
+    "BorderColor": 0,
+    "Filter": 0,
+    "Width": 256,
+    "Height": 256,
+    "PixelsPerUnit": 100,
+    "SpriteType": 0,
+    "Sprites": [
+        {
+            "SpriteID": "7093842391181517484",
+            "Rect": {
+                "x": 0,
+                "y": 0,
+                "w": 2048,
+                "h": 2048
+            },
+            "Border": {
+                "x": 0,
+                "y": 0,
+                "w": 0,
+                "h": 0
+            },
+            "PivotType": 3,
+            "Pivot": {
+                "x": 0,
+                "y": 0
+            },
+            "Name": "11784434"
+        }
+    ],
+    "Platforms Data": [
+        {
+            "Max Size": 256,
+            "Resize Algorithm": 9737,
+            "Compression Mode": 0
+        }
+    ]
+}

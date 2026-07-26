@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <clipPath id="db-only-clip">
+      <path d="M 120 70 C 120 20 392 20 392 70 L 392 440 C 392 490 120 490 120 440 Z" />
+    </clipPath>
+  </defs>
+
+  <g id="database-barrel">
+    <path d="M 120 70 C 120 20 392 20 392 70 L 392 440 C 392 490 120 490 120 440 Z" fill="#a9dbea" />
+    <path d="M 120 190 C 120 215.2 205 226.3 280 223.3 L 280 500 L 120 500 Z" fill="#5c9dc0" clip-path="url(#db-only-clip)" />
+
+    <ellipse cx="256" cy="70" rx="136" ry="45" fill="#a9dbea" stroke="#2c4562" stroke-width="24" />
+    <path d="M 120 190 C 120 235 392 235 392 190" fill="none" stroke="#2c4562" stroke-width="24" stroke-linejoin="round" />
+    <path d="M 120 310 C 120 355 392 355 392 310" fill="none" stroke="#2c4562" stroke-width="24" stroke-linejoin="round" />
+    <path d="M 120 70 L 120 440 C 120 485 392 485 392 440 L 392 70" fill="none" stroke="#2c4562" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
