@@ -3,7 +3,7 @@ using namespace CometEngine;
 class /*@*/ DataBaseSettings : ProjectSetting
 {
 	[Serialize] private string initialDirectoryDDBB = "DDBB/DDBB/";
-	[Serialize] private string initialTablesDirectoryDDBB = "DDBB/Editor/Tables/";
+	[Serialize] private string initialTablesDirectoryDDBB = "DDBB/Editor/";
 
 	string InitialDirectoryDDBB
 	{
