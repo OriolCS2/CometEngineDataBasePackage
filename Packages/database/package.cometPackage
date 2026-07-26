@@ -21,7 +21,7 @@
     "repoUrl": "https:\/\/github.com\/OriolCS2\/CometEngineDataBasePackage",
     "documentationUrl": "",
     "changelogUrl": "https:\/\/github.com\/OriolCS2\/CometEngineDataBasePackage\/blob\/main\/Packages\/database\/CHANGELOG.md",
-    "minEngineVersion": "2.8.1",
+    "minEngineVersion": "2.8.2",
     "dependencies": {},
     "samples": [],
     "hiddenFolders": [],
