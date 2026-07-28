@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "slug": "database",
     "displayName": "DataBase",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "packageType": "package",
     "summary": "Easy way to save\/load everything you need using tables.",
     "description": "Create information tables with your own type of fields and they will auto save\/load.",

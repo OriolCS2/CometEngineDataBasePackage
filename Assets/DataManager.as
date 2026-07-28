@@ -3,7 +3,7 @@ using namespace Json;
 
 class /*@*/ DataManager : CometBehaviour
 {
-	private DDBB::DDBBExtension dataBase;
+	private DDBB::DDBBExtension dataBase = DDBB::DDBBExtension();
 
 	private string globalDataPath = "global.sav";
 	private string sloat1DataPath = "slot1.sav";
